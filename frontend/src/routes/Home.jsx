@@ -12,6 +12,8 @@ const Home = () => {
 
   const dispatch = useDispatch();
 
+  const url = 'https://cloneback.onrender.com';
+
   useEffect(()=>{
     if(fetchStatus.fetchDone)
     {
@@ -19,7 +21,7 @@ const Home = () => {
     }
     dispatch(fetchStatusActions.markFetchingStarted());//to mark the fetchinf has started
 
-    fetch("http://localhost:8080/items").then((res)=>res.json()).then(({items})=>{
+    fetch(`${url}/items`).then((res)=>res.json()).then(({items})=>{
 
       dispatch(fetchStatusActions.markFetchDone());//to mark that fetching is complete
       dispatch(fetchStatusActions.markFetchingDone());
